@@ -1,154 +1,235 @@
-Here is your completely rewritten, single-file HTML, CSS, and JavaScript solution. This new version includes your image, 21 sequential quotes, and is structured for a clean, professional appearance suitable for a Master.
-
-The Code (index.html)
-HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Clarity with Master Suyenlim</title>
+    <title>Daily Spark by Suyen</title>
     <style>
         body {
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            /* A subtle radial gradient inspired by the logo's energy colors */
-            background: radial-gradient(circle at center, #1c1c38 0%, #111122 100%);
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 100%);
             color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             padding: 20px;
         }
-        .container {
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            max-width: 400px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            max-width: 500px;
         }
-        .logo-container {
-            margin-bottom: 30px;
-        }
-        /* Replace 'logo.png' with the actual path to your logo image file.
-           Place the image file in the same folder as this index.html file. */
-        .logo-container img {
-            width: 150px; /* Adjust size as needed */
+        /* Style for the centered logo image at the top */
+        .card img.logo {
+            width: 80px; /* Reduced slightly for visual balance */
             height: auto;
-            border-radius: 5px; /* Optional slight rounding for the logo */
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-        }
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-            margin-bottom: 20px;
-        }
-        h1 {
-            font-size: 1.1rem;
-            opacity: 0.8;
             margin-bottom: 25px;
-            letter-spacing: 2px;
-            font-weight: 500;
+            display: block; /* Ensures centering */
         }
         .day-label {
-            display: block;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            opacity: 0.7;
             margin-bottom: 10px;
-        }
-        #message {
-            font-size: 1.9rem;
-            line-height: 1.45;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-        #author {
-            display: block;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 400;
         }
-        .footer {
+        p#message {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-weight: 600;
+            margin: 10px 0 25px 0;
+        }
+        .attribution {
+            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            font-style: italic;
+        }
+        .refresh-note {
+            margin-top: 25px;
             font-size: 0.8rem;
             opacity: 0.5;
-            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="logo-container">
-            <img src="image_0.png" alt="Master Suyenlim Logo">
-        }
-        </div>
-
-        <div class="card">
-            <h1>DAILY COSMIC INSIGHT</h1>
-            <p id="message">
-                <span class="day-label" id="day-num">Day -</span>
-                <span id="quote-text">Loading your message...</span>
-            </p>
-            <span id="author">- Master Suyenlim</span>
-        </div>
-
-        <div class="footer">Connect daily for clarity and flow.</div>
+    <div class="card">
+        <img src="suyen_butterfly.png" alt="Suyen Butterfly Logo" class="logo">
+        <div class="day-label" id="day-counter">Loading...</div>
+        <p id="message">Focusing your personal energy field...</p>
+        <div class="attribution">&mdash; Guidance by Master Suyenlim &mdash;</div>
+        <div class="refresh-note">Your daily alignment is set. Tap tomorrow to reset your position.</div>
     </div>
 
     <script>
-        const quotes = [
-            "Your energy forms a foundation; align your celestial elements today.",
-            "Qi must flow; unblock a small stagnancy for immediate mental clarity.",
-            "Balance your structure; prioritize core strengths and find harmony in opposites.",
-            "Direct your gaze; focused intent summons the energy you require.",
-            "Root your presence; a stable foundation is the key to expanding your reach.",
-            "Mastering timing is mastery of your path; act decisively when the flow is aligned.",
-            "Clarity is your internal compass; clear your space, clear your mind, and trust your direction.",
-            "Find your element's resonance; strengthen your weakest element with focused intention.",
-            "Embrace the light; open your spatial energy to receive abundance.",
-            "A balanced interior creates balanced intuition; organize your immediate world.",
-            "Timing is a celestial pulse; observe the natural flow to move effortlessly with destiny.",
-            "Harmony with others is the multiplier of your internal Qi; nurture your connections.",
-            "Your mind is a field; plant seeds of positivity, and the harvest will elevate your spirit.",
-            "Qi is amplified by clear, purposeful action; decide and then do.",
-            "A quiet center is a repository for wisdom; protect your inner silence.",
-            "Balance your life’s aspects; work and rest must move in a cyclical dance.",
-            "The energy of the cosmos is vast; tap into its power with a humble, grateful heart.",
-            "Clarity allows for precise decisions; make today’s choices from your center.",
-            "Alignment with the heavens brings unexpected support; maintain your focus on virtuous goals.",
-            "Master your emotions, and you master the flow of your internal energy.",
-            "Self-mastery through alignment is the ultimate goal; you are the architect of your own cosmic flow."
+        // 21 Fixed Sequential Quotes
+        const fixedQuotes = [
+            "Your breath is the basic 'Qi'. Inhale clarity; exhale static.",
+            "Water shapes the earth. Today, find the path of least resistance.",
+            "Confidence is a resonant frequency. Raise yours to match your goals.",
+            "Small shifts in alignment create vast changes in destination.",
+            "Your intention is the true magnetic north. Check your compass.",
+            "Flow doesn't mean passive. A rushing river actively creates its course.",
+            "Luck is often a product of being in the right space, at the right moment.",
+            "Simplified energy. The simplest solution is frequently the most resonant.",
+            "The universe is in motion. Align your actions with the forward current.",
+            "Your internal world dictates your external positioning.",
+            "Ground your energy. A stable base allows for powerful growth.",
+            "The elements are tools. Use passion (Fire) to fuel the journey.",
+            "Balance. For every output of energy, secure an input of peace.",
+            "Synchronicity is the language of flow. Notice the connections.",
+            "The direction of movement is more vital than the speed.",
+            "Lightness is power. Release the heavy static holding you back.",
+            "The center is your point of control. Re-center often.",
+            "Wisdom is identifying the current and knowing when to swim.",
+            "Abundance is a state of active appreciation, not passive waiting.",
+            "Clarity allows you to spot opportunities before they drift past.",
+            "The journey of positioning is ongoing. Enjoy today's coordinate."
         ];
 
-        const getProjectDayNumber = () => {
-            const now = new Date();
-            const startKey = 'suyenClarityStartDate';
-            let startDate = localStorage.getItem(startKey);
+        // 60+ Other Randomized Positive Quotes (Total 60 entries generated)
+        const randomPool = [
+            "Simplified Feng Shui principle: Clear the clutter in your mind.",
+            "Aligning your space can begin by aligning your heart's intention.",
+            "Your primary location is your own body. Tune its resonance daily.",
+            "Good energy seeks balanced channels. Keep yours open and smooth.",
+            "The metal element is clarity. Sharpen your focus and cut the noise.",
+            "Every sunrise resets the world's potential. Reset yours too.",
+            "A balanced position brings opportunity to your doorstep.",
+            "The cosmic clock is precise. Today is perfectly on time.",
+            "Positivity is a potent shield. Cultivate it; reflect all static.",
+            "Water's secret: Persistent gentleness can reshape mountains.",
+            "Ground your position to the Earth's stable frequency.",
+            "Fire isn't just passion; it is transformation. Ignite a positive change.",
+            "Wood's energy is upward expansion. Deep roots support high growth.",
+            "The central position is the point of command. Re-center right now.",
+            "Your internal dialogue is the music that shapes your reality.",
+            "Positioning for luck starts with believing you are lucky.",
+            "A shift of one degree in thought changes your entire destiny.",
+            "Simplified Metaphysics: Your resonance is your reality.",
+            "The universe flows with positive intent. Align and move with it.",
+            "Clarity is the ultimate amplifier of intentions.",
+            "Your personal energy signature is unique. Keep it authentic.",
+            "Luck loves motion. Start small; build a powerful momentum.",
+            "Simplified cosmic positioning: Face towards possibilities, not limitations.",
+            "Simplified flow: Stop resisting the inevitable; start shaping the possible.",
+            "Good energy is a gift. The best gift is one you can generate yourself.",
+            "Balanced positioning isn't stillness; it's optimal movement.",
+            "Ground yourself daily to maintain strong personal energy levels.",
+            "The simplest form of personal alchemy is changing complaint into gratitude.",
+            "Your position in life is dynamic. If you dislike it, make a new shift.",
+            "The cosmos is organized chaos. Your organized intent creates order.",
+            "Positive thoughts position your mind for positive outcomes.",
+            "The key element today is resilience. Bounce back with confidence.",
+            "Luck is often preparation meeting the alignment of the moments.",
+            "Clarity is your point of focus. Narrow it and achieve precision.",
+            "The metal element is structure. Organize your energy before you execute.",
+            "Grounding gives you the stability to safely touch the sky.",
+            "Your resonance influences those around you. Resonate peace.",
+            "A dynamic position adapts to the terrain; it does not try to fight it.",
+            "The water element teaches adaptation. Bend like the river to maintain your force.",
+            "Positive intention is the fuel. Good positioning is the road map.",
+            "Your cosmic address is: 'Here, Now'. Make it powerful.",
+            "The center is where strength resides. Find yours immediately.",
+            "Simplified positioning: Put yourself in situations that inspire your best self.",
+            "The universe communicates in opportunities. Open your eyes to them.",
+            "Your personal frequency is contagious. Resonate with kindness.",
+            "Luck likes clarity. Define your destination and the path will clarify.",
+            "Positive shifts: Small changes in habit have enormous energy impacts.",
+            "Simplified flow is not laziness. It's working with the universal current.",
+            "Your alignment is a daily maintenance task. Check it now.",
+            "The water element can carve stone. Gentle persistence wins.",
+            "Simplified position is finding the optimal angle for success.",
+            "Position yourself so good things can easily find you.",
+            "Clarity allows you to avoid the static and focus on the signals.",
+            "Your intention is a beacon. Keep it bright and clear.",
+            "A shift in position often requires a shift in mindset first.",
+            "Simplified cosmic principle: You receive what you are aligned to.",
+            "Good energy is an asset. Protect your personal storage.",
+            "Positive intentions create positive feedback loops.",
+            "Simplified flow is finding your natural rhythm, not fighting it.",
+            "Ground your focus, clear your path, and position for victory."
+        ];
 
-            if (!startDate) {
-                startDate = now.getTime().toString();
-                localStorage.setItem(startKey, startDate);
+        // Tracking Logic using localStorage
+        const suyenStorageKey = 'suyen_nfc_project'; // Unique key to avoid conflicts
+        const day1ReloadKey = 'suyen_day1_viewed'; // Key specific to tracking the day 1 view
+
+        const displayQuote = () => {
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0]; // Format like '2023-10-27'
+
+            let state = JSON.parse(localStorage.getItem(suyenStorageKey));
+            let messageToShow = '';
+            let dayLabelText = '';
+
+            // 1. Initialize State if First Time (or date calculation fails)
+            if (!state || !state.startDate) {
+                state = {
+                    startDate: todayStr,
+                    dayOneSeqShown: false // Special flag for Day 1 sequential
+                };
+                localStorage.setItem(suyenStorageKey, JSON.stringify(state));
             }
 
-            const daysSinceStart = Math.floor((now.getTime() - parseInt(startDate)) / (24 * 60 * 60 * 1000));
-            // Ensure the day wraps within 21 (1-21, then 1 again)
-            return (daysSinceStart % 21) + 1;
+            // 2. Calculate Current Day (persistent)
+            const startDateObj = new Date(state.startDate);
+            const todayObj = new Date(todayStr);
+            // Calculate whole days difference
+            const timeDiff = todayObj.getTime() - startDateObj.getTime();
+            const daysPast = Math.floor(timeDiff / (1000 * 3600 * 24));
+            const currentDay = daysPast + 1; // Days past 0 is Day 1
+
+            // 3. SELECTION LOGIC
+
+            // --- Condition A: Past Day 21 (Day 22+) ---
+            if (currentDay > 21) {
+                const randomIndex = Math.floor(Math.random() * randomPool.length);
+                messageToShow = randomPool[randomIndex];
+                dayLabelText = `Day ${currentDay}`;
+            }
+            // --- Condition B: Handle Special Day 1 Reload Logic ---
+            else if (currentDay === 1) {
+                // Check if the fixed Day 1 message has already been viewed TODAY
+                let day1Shown = localStorage.getItem(day1ReloadKey);
+
+                if (day1Shown === todayStr) {
+                    // It is day 1 and was viewed already, treat as reload
+                    const randomIndex = Math.floor(Math.random() * randomPool.length);
+                    messageToShow = randomPool[randomIndex];
+                    dayLabelText = 'Day 1';
+                } else {
+                    // It is Day 1, first view ever, show sequential
+                    messageToShow = fixedQuotes[0];
+                    localStorage.setItem(day1ReloadKey, todayStr); // Flag it for next time
+                    dayLabelText = 'Day 1';
+                }
+            }
+            // --- Condition C: Sequential Flow (Days 2–21) ---
+            else {
+                // Show strict sequential for Days 2-21
+                // fixedQuotes[currentDay - 1] pulls the quote matching the day number (Day 2 gets index 1)
+                messageToShow = fixedQuotes[currentDay - 1];
+                dayLabelText = `Day ${currentDay}`;
+            }
+
+            // 4. Update the UI with safe defaults if needed
+            document.getElementById('message').innerText = messageToShow || "Alignment successful. Focus your personal Qi.";
+            document.getElementById('day-counter').innerText = dayLabelText || "Daily Spark";
         };
 
-        const displaySequentialQuote = () => {
-            const currentDayNumber = getProjectDayNumber();
-            document.getElementById('day-num').innerText = `Day ${currentDayNumber}`;
-            document.getElementById('quote-text').innerText = quotes[currentDayNumber - 1];
-        };
-
-        window.onload = displaySequentialQuote;
+        window.onload = displayQuote;
     </script>
 </body>
 </html>
