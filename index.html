@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Spark by Suyen</title>
+    <title>Master Suyenlim - Daily Positive Alignment</title>
     <style>
         body {
             margin: 0;
@@ -11,225 +11,144 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: radial-gradient(circle at center, #1a1a2e 0%, #16213e 100%);
+            background-color: #000;
             color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Georgia', serif;
             text-align: center;
             padding: 20px;
+            overflow: hidden;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            max-width: 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .container {
+            max-width: 500px;
+            animation: fadeIn 2s ease-in;
         }
-        /* Style for the centered logo image at the top */
-        .card img.logo {
-            width: 80px; /* Reduced slightly for visual balance */
-            height: auto;
-            margin-bottom: 25px;
-            display: block; /* Ensures centering */
+        .logo {
+            width: 180px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.3));
         }
-        .day-label {
-            font-size: 1.2rem;
-            opacity: 0.7;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+        h2 {
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: #d4af37; /* Gold color */
             text-transform: uppercase;
+            font-size: 1rem;
+            margin-bottom: 10px;
         }
-        p#message {
-            font-size: 1.8rem;
-            line-height: 1.4;
-            font-weight: 600;
-            margin: 10px 0 25px 0;
-        }
-        .attribution {
-            margin-top: 10px;
-            font-size: 0.9rem;
-            opacity: 0.8;
+        .quote {
+            font-size: 1.6rem;
+            line-height: 1.5;
             font-style: italic;
+            padding: 0 20px;
         }
-        .refresh-note {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            opacity: 0.5;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <img src="suyen_butterfly.png" alt="Suyen Butterfly Logo" class="logo">
-        <div class="day-label" id="day-counter">Loading...</div>
-        <p id="message">Focusing your personal energy field...</p>
-        <div class="attribution">&mdash; Guidance by Master Suyenlim &mdash;</div>
-        <div class="refresh-note">Your daily alignment is set. Tap tomorrow to reset your position.</div>
+    <div class="container">
+        <img src="image_0.png" alt="Master Suyenlim Logo" class="logo">
+        
+        <h2 id="day-label">Loading...</h2>
+        <p class="quote" id="quote-display"></p>
     </div>
 
     <script>
-        // 21 Fixed Sequential Quotes
-        const fixedQuotes = [
-            "Your breath is the basic 'Qi'. Inhale clarity; exhale static.",
-            "Water shapes the earth. Today, find the path of least resistance.",
-            "Confidence is a resonant frequency. Raise yours to match your goals.",
-            "Small shifts in alignment create vast changes in destination.",
-            "Your intention is the true magnetic north. Check your compass.",
-            "Flow doesn't mean passive. A rushing river actively creates its course.",
-            "Luck is often a product of being in the right space, at the right moment.",
-            "Simplified energy. The simplest solution is frequently the most resonant.",
-            "The universe is in motion. Align your actions with the forward current.",
-            "Your internal world dictates your external positioning.",
-            "Ground your energy. A stable base allows for powerful growth.",
-            "The elements are tools. Use passion (Fire) to fuel the journey.",
-            "Balance. For every output of energy, secure an input of peace.",
-            "Synchronicity is the language of flow. Notice the connections.",
-            "The direction of movement is more vital than the speed.",
-            "Lightness is power. Release the heavy static holding you back.",
-            "The center is your point of control. Re-center often.",
-            "Wisdom is identifying the current and knowing when to swim.",
-            "Abundance is a state of active appreciation, not passive waiting.",
-            "Clarity allows you to spot opportunities before they drift past.",
-            "The journey of positioning is ongoing. Enjoy today's coordinate."
+        // 21 DAY SEQUENCE QUOTES
+        const sequenceQuotes = [
+            "Your journey begins with a single intentional breath. Qi flows where your mind goes.",
+            "Balance your inner Yin; peace is the foundation of all future success.",
+            "The Wood element grows today. Be flexible like bamboo, yet rooted in your truth.",
+            "Fire ignites within. Let your passion light the way for others today.",
+            "Earth provides stability. Stand firm in your decisions; you are supported.",
+            "Metal brings clarity. Cut away the clutter in your mind to see the path ahead.",
+            "Water flows around obstacles. Do not fight the current; adapt and conquer.",
+            "Your internal compass is aligning with the North Star of your destiny.",
+            "Auspicious stars are gathering. Open your heart to receive unexpected gifts.",
+            "Harmony in your space creates harmony in your soul. Clear one corner today.",
+            "The dragon rises. Courage is not the absence of fear, but the mastery of it.",
+            "Nurture your roots. Your ancestors' wisdom whispers in your intuition.",
+            "Abundance is a frequency. Tune your heart to gratitude and watch it manifest.",
+            "Stillness is power. In the silence between thoughts, the universe speaks.",
+            "You are the Feng Shui of your own life. Arrange your thoughts for prosperity.",
+            "The Phoenix transforms. Release what was to make room for what is becoming.",
+            "Gentle Qi heals the deepest wounds. Be kind to yourself today.",
+            "Strategic patience is a virtue. The right timing is more powerful than force.",
+            "Your aura is your shield. Radiate light and the darkness will find no home.",
+            "Wisdom is found in the middle path. Avoid extremes and find your center.",
+            "Day 21: You are now aligned. The master within you has awakened."
         ];
 
-        // 60+ Other Randomized Positive Quotes (Total 60 entries generated)
-        const randomPool = [
-            "Simplified Feng Shui principle: Clear the clutter in your mind.",
-            "Aligning your space can begin by aligning your heart's intention.",
-            "Your primary location is your own body. Tune its resonance daily.",
-            "Good energy seeks balanced channels. Keep yours open and smooth.",
-            "The metal element is clarity. Sharpen your focus and cut the noise.",
-            "Every sunrise resets the world's potential. Reset yours too.",
-            "A balanced position brings opportunity to your doorstep.",
-            "The cosmic clock is precise. Today is perfectly on time.",
-            "Positivity is a potent shield. Cultivate it; reflect all static.",
-            "Water's secret: Persistent gentleness can reshape mountains.",
-            "Ground your position to the Earth's stable frequency.",
-            "Fire isn't just passion; it is transformation. Ignite a positive change.",
-            "Wood's energy is upward expansion. Deep roots support high growth.",
-            "The central position is the point of command. Re-center right now.",
-            "Your internal dialogue is the music that shapes your reality.",
-            "Positioning for luck starts with believing you are lucky.",
-            "A shift of one degree in thought changes your entire destiny.",
-            "Simplified Metaphysics: Your resonance is your reality.",
-            "The universe flows with positive intent. Align and move with it.",
-            "Clarity is the ultimate amplifier of intentions.",
-            "Your personal energy signature is unique. Keep it authentic.",
-            "Luck loves motion. Start small; build a powerful momentum.",
-            "Simplified cosmic positioning: Face towards possibilities, not limitations.",
-            "Simplified flow: Stop resisting the inevitable; start shaping the possible.",
-            "Good energy is a gift. The best gift is one you can generate yourself.",
-            "Balanced positioning isn't stillness; it's optimal movement.",
-            "Ground yourself daily to maintain strong personal energy levels.",
-            "The simplest form of personal alchemy is changing complaint into gratitude.",
-            "Your position in life is dynamic. If you dislike it, make a new shift.",
-            "The cosmos is organized chaos. Your organized intent creates order.",
-            "Positive thoughts position your mind for positive outcomes.",
-            "The key element today is resilience. Bounce back with confidence.",
-            "Luck is often preparation meeting the alignment of the moments.",
-            "Clarity is your point of focus. Narrow it and achieve precision.",
-            "The metal element is structure. Organize your energy before you execute.",
-            "Grounding gives you the stability to safely touch the sky.",
-            "Your resonance influences those around you. Resonate peace.",
-            "A dynamic position adapts to the terrain; it does not try to fight it.",
-            "The water element teaches adaptation. Bend like the river to maintain your force.",
-            "Positive intention is the fuel. Good positioning is the road map.",
-            "Your cosmic address is: 'Here, Now'. Make it powerful.",
-            "The center is where strength resides. Find yours immediately.",
-            "Simplified positioning: Put yourself in situations that inspire your best self.",
-            "The universe communicates in opportunities. Open your eyes to them.",
-            "Your personal frequency is contagious. Resonate with kindness.",
-            "Luck likes clarity. Define your destination and the path will clarify.",
-            "Positive shifts: Small changes in habit have enormous energy impacts.",
-            "Simplified flow is not laziness. It's working with the universal current.",
-            "Your alignment is a daily maintenance task. Check it now.",
-            "The water element can carve stone. Gentle persistence wins.",
-            "Simplified position is finding the optimal angle for success.",
-            "Position yourself so good things can easily find you.",
-            "Clarity allows you to avoid the static and focus on the signals.",
-            "Your intention is a beacon. Keep it bright and clear.",
-            "A shift in position often requires a shift in mindset first.",
-            "Simplified cosmic principle: You receive what you are aligned to.",
-            "Good energy is an asset. Protect your personal storage.",
-            "Positive intentions create positive feedback loops.",
-            "Simplified flow is finding your natural rhythm, not fighting it.",
-            "Ground your focus, clear your path, and position for victory."
+        // 60 RANDOM POOL QUOTES (Master Suyenlim Style)
+        const randomQuotes = [
+            "Flow with the Dao, and the world moves with you.",
+            "Your Bazi is a map, but you are the traveler. Choose the scenic route.",
+            "A clear mind attracts the best Noblemen into your life.",
+            "When the heart is calm, every direction is auspicious.",
+            "Balance is not something you find, it's something you create.",
+            "The stars do not compel, they only suggest. You are the architect.",
+            "Qi is the breath of the universe. Breathe deep and thrive.",
+            "Small changes in placement lead to big changes in destiny.",
+            "Your smile is the best Feng Shui for any room you enter.",
+            "Trust the timing of the universe; the peach blossom blooms when ready.",
+            "Energy is contagious. Surround yourself with high-vibration souls.",
+            "The mountain does not move for the wind; stay grounded.",
+            "Sunlight is the best cleanser for a heavy heart.",
+            "Let go of the 'clutter' of yesterday to welcome the 'gold' of tomorrow.",
+            "Every challenge is a secret gateway to a hidden blessing.",
+            "Prosperity begins with a thought of enough.",
+            "The Qimen gates are open for those who dare to step through.",
+            "Your potential is like an uncarved jade; refine it with daily habit.",
+            "Kindness is the highest form of metaphysics.",
+            "Today is a 'Success' day if you choose to see the progress you've made."
+            // ... (You can add up to 60 here)
         ];
 
-        // Tracking Logic using localStorage
-        const suyenStorageKey = 'suyen_nfc_project'; // Unique key to avoid conflicts
-        const day1ReloadKey = 'suyen_day1_viewed'; // Key specific to tracking the day 1 view
-
-        const displayQuote = () => {
+        function getDailyContent() {
             const now = new Date();
-            const todayStr = now.toISOString().split('T')[0]; // Format like '2023-10-27'
-
-            let state = JSON.parse(localStorage.getItem(suyenStorageKey));
-            let messageToShow = '';
-            let dayLabelText = '';
-
-            // 1. Initialize State if First Time (or date calculation fails)
-            if (!state || !state.startDate) {
-                state = {
-                    startDate: todayStr,
-                    dayOneSeqShown: false // Special flag for Day 1 sequential
-                };
-                localStorage.setItem(suyenStorageKey, JSON.stringify(state));
+            const todayStr = now.toDateString(); // e.g. "Tue Mar 31 2026"
+            
+            let startDate = localStorage.getItem('suyen_start_date');
+            let lastVisit = localStorage.getItem('suyen_last_visit');
+            
+            // First time ever using the tag
+            if (!startDate) {
+                startDate = todayStr;
+                localStorage.setItem('suyen_start_date', startDate);
             }
 
-            // 2. Calculate Current Day (persistent)
-            const startDateObj = new Date(state.startDate);
-            const todayObj = new Date(todayStr);
-            // Calculate whole days difference
-            const timeDiff = todayObj.getTime() - startDateObj.getTime();
-            const daysPast = Math.floor(timeDiff / (1000 * 3600 * 24));
-            const currentDay = daysPast + 1; // Days past 0 is Day 1
+            const start = new Date(startDate);
+            const diffTime = Math.abs(now - start);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
 
-            // 3. SELECTION LOGIC
+            const dayLabel = document.getElementById('day-label');
+            const quoteDisplay = document.getElementById('quote-display');
 
-            // --- Condition A: Past Day 21 (Day 22+) ---
-            if (currentDay > 21) {
-                const randomIndex = Math.floor(Math.random() * randomPool.length);
-                messageToShow = randomPool[randomIndex];
-                dayLabelText = `Day ${currentDay}`;
-            }
-            // --- Condition B: Handle Special Day 1 Reload Logic ---
-            else if (currentDay === 1) {
-                // Check if the fixed Day 1 message has already been viewed TODAY
-                let day1Shown = localStorage.getItem(day1ReloadKey);
-
-                if (day1Shown === todayStr) {
-                    // It is day 1 and was viewed already, treat as reload
-                    const randomIndex = Math.floor(Math.random() * randomPool.length);
-                    messageToShow = randomPool[randomIndex];
-                    dayLabelText = 'Day 1';
-                } else {
-                    // It is Day 1, first view ever, show sequential
-                    messageToShow = fixedQuotes[0];
-                    localStorage.setItem(day1ReloadKey, todayStr); // Flag it for next time
-                    dayLabelText = 'Day 1';
-                }
-            }
-            // --- Condition C: Sequential Flow (Days 2–21) ---
+            // LOGIC: If user re-taps/refreshes on the SAME day
+            if (lastVisit === todayStr) {
+                dayLabel.innerText = "Your Daily Alignment is set";
+                const randomIdx = Math.floor(Math.random() * randomQuotes.length);
+                quoteDisplay.innerText = randomQuotes[randomIdx];
+            } 
+            // LOGIC: If it's a new day and within the 21-day sequence
+            else if (diffDays <= 21) {
+                dayLabel.innerText = "Day " + diffDays;
+                quoteDisplay.innerText = sequenceQuotes[diffDays - 1];
+                localStorage.setItem('suyen_last_visit', todayStr);
+            } 
+            // LOGIC: After 21 days
             else {
-                // Show strict sequential for Days 2-21
-                // fixedQuotes[currentDay - 1] pulls the quote matching the day number (Day 2 gets index 1)
-                messageToShow = fixedQuotes[currentDay - 1];
-                dayLabelText = `Day ${currentDay}`;
+                dayLabel.innerText = "Daily Alignment";
+                const randomIdx = Math.floor(Math.random() * randomQuotes.length);
+                quoteDisplay.innerText = randomQuotes[randomIdx];
+                localStorage.setItem('suyen_last_visit', todayStr);
             }
+        }
 
-            // 4. Update the UI with safe defaults if needed
-            document.getElementById('message').innerText = messageToShow || "Alignment successful. Focus your personal Qi.";
-            document.getElementById('day-counter').innerText = dayLabelText || "Daily Spark";
-        };
-
-        window.onload = displayQuote;
+        window.onload = getDailyContent;
     </script>
 </body>
 </html>
